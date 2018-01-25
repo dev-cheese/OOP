@@ -7,7 +7,7 @@ public class Main {
 
         gameCharacter.attack();
 
-        gameCharacter.setWeapon(new Knife());
+        gameCharacter.setWeapon(new Knife("111", "222"));
         gameCharacter.attack();
 
         gameCharacter.setWeapon(new Sword());
