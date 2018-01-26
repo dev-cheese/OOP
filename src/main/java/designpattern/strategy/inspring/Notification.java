@@ -1,12 +1,9 @@
 package designpattern.strategy.inspring;
 
-// 간단하게 전략 패턴을 구현 했습니다. 소스를 간단하게 설명 하자면 setNotification 메소드에 어떤 인스턴르를 주입 하냐에 따라서 send의 행위가 달라집니다.
 public abstract class Notification {
     protected abstract void send();
 }
-// 1, 2, 3 순서대로 읽어주시면 감사하겠습니다.
-//2: 1 번을 하기위해서 빈등록을 프로토타입으로 했습니다.
-//3:  프로토 타입으로 한 이유는 멤버 필드가 있어 스레드에 세이프 하지 않다고 판단 해서 입니다.
+
 class NotificationEmail extends Notification {
     private String email;
 
@@ -29,7 +26,7 @@ class NotificationSMS extends Notification {
 
     @Override
     protected void send() {
-        System.out.println( number+" SMS 알림 전송");
+        System.out.println(number + " SMS 알림 전송");
     }
 }
 
@@ -44,6 +41,71 @@ class NotificationSender {
         notification.send();
     }
 }
+class Slack {
+    private String slackUrl;
+    private String accessToken;
+
+    public String getSlackUrl() {
+        return slackUrl;
+    }
+
+    public void setSlackUrl(String slackUrl) {
+        this.slackUrl = slackUrl;
+    }
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
+    }
+}
+
+class NotificationSlack extends Notification {
+
+
+    private Slack slack;
+
+    public NotificationSlack(Slack slack) {
+        this.slack = slack;
+    }
+
+    @Override
+    protected void send() {
+        System.out.println(slack.getAccessToken() + slack.getSlackUrl() + "을 기반으로 슬랙으로 메세지를 보냅니다");
+    }
+}
+
+final class SlackBuilder {
+    private String slackUrl;
+    private String accessToken;
+
+    private SlackBuilder() {
+    }
+
+    public static SlackBuilder aSlack() {
+        return new SlackBuilder();
+    }
+
+    public SlackBuilder withSlackUrl(String slackUrl) {
+        this.slackUrl = slackUrl;
+        return this;
+    }
+
+    public SlackBuilder withAccessToken(String accessToken) {
+        this.accessToken = accessToken;
+        return this;
+    }
+
+    public Slack build() {
+        Slack slack = new Slack();
+        slack.setSlackUrl(slackUrl);
+        slack.setAccessToken(accessToken);
+        return slack;
+    }
+}
+
 
 class Main {
     public static void main(String[] args) {
@@ -54,9 +116,33 @@ class Main {
 
         sender.setNotification(new NotificationEmail("cheese10yun"));
         sender.send();
+
+
+        sender.setNotification(new NotificationSlack(
+                SlackBuilder.aSlack()
+                .withAccessToken("aacclwlw-1-2kl2k2k")
+                .withSlackUrl("www.slack-")
+                .build()
+        ));
+        sender.send();
+
+
     }
 }
 
+
+/**
+ * 이메일주소,전화번호,notification객체를 메소드의 파라미터로 받게하고
+ * <p>
+ * <p>
+ * 빈은 프로토타입이  아닌  일반빈(싱글톤)으로 만들면 좋을것 같네요
+ * 프로토타입 빈을  남발하면 동접자가  많아지면 메모리가  부족해질겁니다
+ * <p>
+ * 잘 이해가 가지 않습니다. 멤버 필드를 사용하지 않고 send 메소드에 어떻게 넘겨줄수 있을 까요 ?
+ * send() 오버라이딩 되어 NotificationEmail 클래스에서는 이메일이 보내야 하고,  NotificationSMS 클래스에서는 이메일을 보내야합니다.
+ * send() 는 동일하게 하위 재정의가 동일하게 되니 해당 클래스마다 달라지면 안된다고 생각합니다 SRP, OCP 위반이라고 생각이 들고요
+ * 순수 자바에서는 맴버필드를 이용해서 매끄럽게 send 메소드에 값을 할당 할 수 있습니다. 하지만 스프링에서는 싱글톤 사용시 맴버 필드가 스레드에 안전하지 않으니 저렇게라도 구현을 해야하는가 입니다.
+ */
 
 
 
