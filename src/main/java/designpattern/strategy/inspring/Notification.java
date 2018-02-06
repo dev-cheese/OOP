@@ -117,16 +117,6 @@ class Main {
         sender.setNotification(new NotificationEmail("cheese10yun"));
         sender.send();
 
-
-        sender.setNotification(new NotificationSlack(
-                SlackBuilder.aSlack()
-                .withAccessToken("aacclwlw-1-2kl2k2k")
-                .withSlackUrl("www.slack-")
-                .build()
-        ));
-        sender.send();
-
-
     }
 }
 
