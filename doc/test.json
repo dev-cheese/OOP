@@ -1,0 +1,12 @@
+{
+  "address": "주소",
+  "port": 3305,
+  "isSSL": true,
+  "mail": [
+    {
+      "id": "id",
+      "password": "password",
+      "email": "test@test.com"
+    }
+  ]
+}
