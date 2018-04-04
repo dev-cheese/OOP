@@ -1,0 +1,12 @@
+{
+  "id": 0,
+  "purpose": "string",
+  "srcMoney": "string",
+  "fee": 0,
+  "exchangeRate": 0,
+  "expireate":0,
+  "createdAt": 0,
+  "tuitionNoticeImgUrl": "string",
+  "bankName": "string",
+  "bankCode": "string"
+}

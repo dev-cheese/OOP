@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>designpattern.strategy.advance.Robot</OriginalElement>
+  <nodes>
+    <node x="0.0" y="279.0">designpattern.strategy.advance.TakewonV</node>
+    <node x="203.0" y="279.0">designpattern.strategy.advance.Atom</node>
+    <node x="0.0" y="476.0">designpattern.strategy.advance.FlyingStrategy</node>
+    <node x="358.0" y="476.0">designpattern.strategy.advance.PunchStrategy</node>
+    <node x="441.0" y="375.0">designpattern.strategy.advance.AttackStrategy</node>
+    <node x="82.75" y="375.0">designpattern.strategy.advance.MovingStrategy</node>
+    <node x="164.0" y="476.0">designpattern.strategy.advance.WalkingStrategy</node>
+    <node x="524.0" y="476.0">designpattern.strategy.advance.MissileStrategy</node>
+    <node x="24.75" y="0.0">designpattern.strategy.advance.Robot</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="designpattern.strategy.advance.Atom" target="designpattern.strategy.advance.Robot">
+      <point x="0.0" y="-25.5" />
+      <point x="279.0" y="254.0" />
+      <point x="265.5" y="254.0" />
+      <point x="80.25" y="114.5" />
+    </edge>
+    <edge source="designpattern.strategy.advance.MissileStrategy" target="designpattern.strategy.advance.AttackStrategy">
+      <point x="0.0" y="-25.5" />
+      <point x="597.0" y="451.0" />
+      <point x="550.5" y="451.0" />
+      <point x="36.5" y="25.5" />
+    </edge>
+    <edge source="designpattern.strategy.advance.FlyingStrategy" target="designpattern.strategy.advance.MovingStrategy">
+      <point x="0.0" y="-25.5" />
+      <point x="72.0" y="451.0" />
+      <point x="119.0" y="451.0" />
+      <point x="-36.25" y="25.5" />
+    </edge>
+    <edge source="designpattern.strategy.advance.WalkingStrategy" target="designpattern.strategy.advance.MovingStrategy">
+      <point x="0.0" y="-25.5" />
+      <point x="238.5" y="451.0" />
+      <point x="191.5" y="451.0" />
+      <point x="36.25" y="25.5" />
+    </edge>
+    <edge source="designpattern.strategy.advance.PunchStrategy" target="designpattern.strategy.advance.AttackStrategy">
+      <point x="0.0" y="-25.5" />
+      <point x="431.0" y="451.0" />
+      <point x="477.5" y="451.0" />
+      <point x="-36.5" y="25.5" />
+    </edge>
+    <edge source="designpattern.strategy.advance.TakewonV" target="designpattern.strategy.advance.Robot">
+      <point x="0.0" y="-25.5" />
+      <point x="91.5" y="254.0" />
+      <point x="105.0" y="254.0" />
+      <point x="-80.25" y="114.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="493.0" y="216.0" />
+  <SelectedNodes>
+    <node>designpattern.strategy.advance.Robot</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
