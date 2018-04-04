@@ -1,7 +1,12 @@
 {
-  "age": 25,
-  "name": {
-    "lastName": "홍"
-    "firstName": "길동"
-  }
+  "address": "주소",
+  "port": 3305,
+  "isSSL": true,
+  "mail": [
+    {
+      "id": "id",
+      "password": "password",
+      "email": "test@test.com"
+    }
+  ]
 }
